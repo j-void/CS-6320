@@ -70,7 +70,7 @@ def generate_random_stereogram(im_size: Tuple[int, int, int] = (51, 51, 3), disp
   ############################################################################
   # Student code end
   ############################################################################
-  return im_left, im_right
+  return im_left.float(), im_right.float()
 
 
 def stereo_helper_fn(im_left, im_right, block_size=[5, 9, 13], max_search_bound=15):
@@ -226,7 +226,7 @@ def vis_image_scales_numpy(image: np.ndarray) -> np.ndarray:
     new_h = int(scale_factor * new_h)
     new_w = int(scale_factor * new_w)
     # downsample image iteratively
-    cur_image = 2(cur_image, size=(new_w, new_h))
+    # cur_image = 2(cur_image, size=(new_w, new_h))
 
     # pad the top to append to the output
     h_pad = original_height - cur_image.shape[0]
