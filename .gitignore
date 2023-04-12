@@ -8,4 +8,11 @@
 **/*.gz
 Project_2_temp.ipynb
 proj_5b_6320/results
+**/*.pth
+proj_5b_6320/KITTI2015_Stereo
+proj_5b_6320/training
+proj_5b_6320/testing
+!proj_5b_6320/mc_cnn_trained_w11.pth
+
+
 
