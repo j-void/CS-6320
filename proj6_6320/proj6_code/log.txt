@@ -1,0 +1,23 @@
+| Optimizer | Learning Rate | Weight Decay | Momentum | Batch Size | Epoch | Training Loss | Training Acc | Test Acc |
+|-----------+---------------+--------------+----------+------------+-------+---------------+--------------+----------|
+| Adam      |          1e-4 |        0.001 | 0.0      |         32 |    30 |        1.2148 |        0.517 |    0.418 |
+| SGD       |          1e-4 |        0.001 | 0.0      |         32 |    30 |        1.0801 |        0.540 |    0.426 |
+| SGD       |          1e-4 |        0.001 | 0.5      |         32 |    30 |               |              |          |
+| Adam      |          1e-3 |        0.001 | -        |         16 |    30 |        0.0069 |         0.97 |     0.51 |
+| Adam      |          1e-3 |        0.003 | -        |         16 |    30 |        0.0751 |        0.959 |     0.55 |
+| Adam      |          1e-3 |        0.003 | -        |         32 |    30 |        0.0575 |         0.96 |     0.53 |
+
+* DONE Test network built without sequence and using just functional forms
+* TODO Replicate functional network results with Sequence model?
+** Not sure if this is working, need to check with a test case
+* TODO Compare running time of SimpleNet and SimpleNet2
+* TODO Test bigger network?
+* TODO Test smaller network
+* TODO Test dropout
+* TODO Test batch norm
+* TODO Test group norm
+* TODO Test layer norm
+* TODO Test Hinge loss?
+* TODO Test randomize then optimize
+** TODO Try just on FC layers and not Conv layers
+** TODO Try on all layers
