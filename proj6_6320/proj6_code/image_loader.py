@@ -61,7 +61,12 @@ class ImageLoader(data.Dataset):
     # Student code begin
     ###########################################################################
 
-    raise NotImplementedError('load_imagepaths_with_labels not implemented')
+    for key, value in class_labels.items():
+      im_pts = glob.glob(os.path.join(self.curr_folder, key, "*.jpg"))
+      if len(im_pts) == 0:
+        im_pts = glob.glob(os.path.join("..", self.curr_folder, key, "*.jpg"))
+      for im in im_pts:
+        img_paths.append((im, value))
 
     ###########################################################################
     # Student code end
@@ -81,7 +86,14 @@ class ImageLoader(data.Dataset):
     # Student code begin
     ###########################################################################
 
-    raise NotImplementedError('get_classes not implemented')
+    class_dirs = glob.glob(os.path.join(self.curr_folder, "*"))
+    if len(class_dirs) == 0:
+      class_dirs = glob.glob(os.path.join("..", self.curr_folder, "*"))
+    class_dirs = list(map(os.path.basename, class_dirs))
+    class_dirs.sort()
+
+    for i in range(len(class_dirs)):
+      classes[class_dirs[i]] = i
 
     ###########################################################################
     # Student code end
@@ -105,8 +117,11 @@ class ImageLoader(data.Dataset):
     ###########################################################################
     # Student code begin
     ###########################################################################
-
-    raise NotImplementedError('load_img_from_path not implemented')
+    
+    try:
+        img = Image.open("../" + path).convert("L")
+    except:
+        img = Image.open(path).convert("L")
 
     ###########################################################################
     # Student code end
@@ -137,7 +152,8 @@ class ImageLoader(data.Dataset):
     # Student code start
     ############################################################################
 
-    raise NotImplementedError('__getitem__ not implemented')
+    img_path, class_idx = self.dataset[index]
+    img = self.transform(self.load_img_from_path(img_path))
 
     ############################################################################
     # Student code end
@@ -158,7 +174,7 @@ class ImageLoader(data.Dataset):
     # Student code start
     ############################################################################
 
-    raise NotImplementedError('__len__ not implemented')
+    l = len(self.dataset)
 
     ############################################################################
     # Student code end

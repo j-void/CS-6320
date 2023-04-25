@@ -29,7 +29,20 @@ def compute_mean_and_std(dir_name: str) -> (np.array, np.array):
   # Student code begin
   ############################################################################
 
-  raise NotImplementedError('compute_mean_and_std not implemented')
+  # imLoader = ImageLoader(root_dir=dir_name)
+
+  image_files = glob.glob(os.path.join(dir_name, "**/*.jpg"), recursive=True)
+  image_files.sort()
+
+  scalar = StandardScaler()
+  
+  for ifile in image_files:
+    img = Image.open(ifile).convert('L')
+    img = np.asarray(img).astype(np.float32) / 255.
+    scalar.partial_fit(img.reshape(-1, 1))
+  
+  mean, std = scalar.mean_, np.sqrt(scalar.var_)
+
 
   ############################################################################
   # Student code end

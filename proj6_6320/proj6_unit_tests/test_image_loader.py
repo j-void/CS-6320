@@ -22,7 +22,7 @@ def test_dataset_length():
     test_image_loader = ImageLoader(root_dir='../data/', split='test', transform=get_fundamental_transforms(
         inp_size=(64, 64), pixel_mean=np.array([0.01]), pixel_std=np.array([1.001])
     ))
-
+  
   assert train_image_loader.__len__() == 2985
   assert test_image_loader.__len__() == 1500
 
