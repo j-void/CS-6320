@@ -86,10 +86,8 @@ class ImageLoader(data.Dataset):
     # Student code begin
     ###########################################################################
 
-    class_dirs = glob.glob(os.path.join(self.curr_folder, "*"))
-    if len(class_dirs) == 0:
-      class_dirs = glob.glob(os.path.join("..", self.curr_folder, "*"))
-    class_dirs = list(map(os.path.basename, class_dirs))
+
+    class_dirs = os.listdir(self.curr_folder)
     class_dirs.sort()
 
     for i in range(len(class_dirs)):
